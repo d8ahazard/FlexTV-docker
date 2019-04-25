@@ -6,7 +6,6 @@ echo "########################## FLEX TV INSTALLER ###########################"
 	echo "No repo found, pulling..."
 	rm -rf /config/www/FlexTV/*
 	git clone https://github.com/d8ahazard/FlexTV /config/www/FlexTV
-fi
 
 echo "Updating Flex TV..."
 cd /config/www/FlexTV
