@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+echo "========================================================================"
+echo "########################## FLEX TV INSTALLER ###########################"
+# fetch site
+[[ ! -d /config/www/FlexTV/.git ]] && \
+	echo "No repo found, pulling..."
+	rm -rf /config/www/FlexTV/*
+	git clone https://github.com/d8ahazard/FlexTV /config/www/FlexTV
+fi
+
+echo "Updating Flex TV..."
+cd /config/www/FlexTV
+git fetch && git pull
+chmod -R 777 /config/www/FlexTV
+git config core.fileMode false
+
+echo "########################## FLEX TV INSTALLER ###########################"
