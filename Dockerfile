@@ -7,6 +7,12 @@ ARG VERSION
 LABEL build_version="Digitalhigh version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="Digitalhigh"
 
+RUN \
+ echo "**** install runtime packages ****" && \
+ apk add --no-cache \
+	curl \
+	php-curl \
+	php-xml
 
 # add local files
 COPY root/ /
