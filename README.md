@@ -66,7 +66,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ## Application Setup
 
 Find the web interface at `<your-ip>:80` , set apps you wish to use with FlexTV via the webui.
-More info:- [FlexTV](https://github.com/mescon/FlexTV)
+More info:- [FlexTV](https://github.com/d8ahazard/FlexTV)
 
 
 
