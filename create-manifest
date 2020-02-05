@@ -8,30 +8,25 @@ TAGS="latest"
 for TAG in $TAGS
 do
 	docker manifest create --amend $DOCKER_ORG/$DOCKER_IMAGE:$TAG \
-	      $DOCKER_ORG/$DOCKER_IMAGE:amd64-$TAG \
-	      $DOCKER_ORG/$DOCKER_IMAGE:arm32v5-$TAG \
-              $DOCKER_ORG/$DOCKER_IMAGE:arm32v6-$TAG \
-	      $DOCKER_ORG/$DOCKER_IMAGE:arm32v7-$TAG \
-	      $DOCKER_ORG/$DOCKER_IMAGE:arm64v8-$TAG
+	      $DOCKER_ORG/$DOCKER_IMAGE:amd64 \
+              $DOCKER_ORG/$DOCKER_IMAGE:arm32v6 \
+	      $DOCKER_ORG/$DOCKER_IMAGE:arm32v7 \
+	      $DOCKER_ORG/$DOCKER_IMAGE:arm64v8
 
 	docker manifest annotate $DOCKER_ORG/$DOCKER_IMAGE:$TAG \
-			$DOCKER_ORG/$DOCKER_IMAGE:amd64-$TAG \
+			$DOCKER_ORG/$DOCKER_IMAGE:amd64 \
 			--os linux --arch amd64
 
 	docker manifest annotate $DOCKER_ORG/$DOCKER_IMAGE:$TAG \
-                        $DOCKER_ORG/$DOCKER_IMAGE:arm32v5-$TAG \
-                        --os linux --arch arm --variant v5
-
-	docker manifest annotate $DOCKER_ORG/$DOCKER_IMAGE:$TAG \
-                        $DOCKER_ORG/$DOCKER_IMAGE:arm32v6-$TAG \
+                        $DOCKER_ORG/$DOCKER_IMAGE:arm32v6 \
                         --os linux --arch arm --variant v6
 
 	docker manifest annotate $DOCKER_ORG/$DOCKER_IMAGE:$TAG \
-			$DOCKER_ORG/$DOCKER_IMAGE:arm32v7-$TAG \
+			$DOCKER_ORG/$DOCKER_IMAGE:arm32v7 \
 			--os linux --arch arm --variant v7
 
 	docker manifest annotate $DOCKER_ORG/$DOCKER_IMAGE:$TAG \
-			$DOCKER_ORG/$DOCKER_IMAGE:arm64v8-$TAG \
+			$DOCKER_ORG/$DOCKER_IMAGE:arm64v8 \
 			--os linux --arch arm64 --variant v8
 
 	docker manifest push $DOCKER_ORG/$DOCKER_IMAGE:$TAG

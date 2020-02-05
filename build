@@ -4,7 +4,7 @@
 
 DOCKER_ARCH=${BUILD_ARCH:-amd64}
 DOCKER_ORG=samip537
-DOCKER_IMAGE=docker-flextv:${DOCKER_ARCH}-latest
+DOCKER_IMAGE=docker-flextv:${DOCKER_ARCH}
 
 if [ ${BUILD_ARCH} = "amd64" ]; then
         docker build --build-arg ARCH=${DOCKER_ARCH} \
