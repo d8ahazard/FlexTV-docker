@@ -1,0 +1,2 @@
+echo "**** Install missing curl module for PHP. ****"
+apk add --no-cache php7-curl
