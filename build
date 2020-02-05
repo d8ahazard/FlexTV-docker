@@ -1,0 +1,18 @@
+#!/bin/bash -ex
+
+DOCKER_ARCH=${BUILD_ARCH:-amd64}
+DOCKER_ORG=samip537
+DOCKER_IMAGE=docker-flextv:${DOCKER_ARCH}
+
+docker build --build-arg ARCH=${DOCKER_ARCH} \
+        -t $DOCKER_ORG/$DOCKER_IMAGE \
+        -f Dockerfile .
+
+docker build --build-arg ARCH=${DOCKER_ARCH} \
+        -t $DOCKER_ORG/$DOCKER_IMAGE \
+        -f Dockerfile.armhf .
+
+docker build --build-arg ARCH=${DOCKER_ARCH} \
+        -t $DOCKER_ORG/$DOCKER_IMAGE \
+        -f Dockerfile.aarch64 .
+
