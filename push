@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+DOCKER_ARCH=${BUILD_ARCH:-amd64}
+DOCKER_ORG=samip537
+DOCKER_IMAGE=docker-flextv:${DOCKER_ARCH}
+
+docker push $DOCKER_ORG/$DOCKER_IMAGE
