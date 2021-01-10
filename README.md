@@ -1,3 +1,4 @@
+# FlexTV Docker
 
 The architectures supported by this image are:
 | Architecture | Tag |
@@ -5,9 +6,12 @@ The architectures supported by this image are:
 | x86-64 | amd64-latest |
 | arm64 | arm64v8-latest |
 | armhf | arm32v7-latest |
+
 ## Usage
 
-```
+### Docker
+
+```docker
 docker create \
   --name=FlexTV \
   -e PUID=1000 \
@@ -17,21 +21,22 @@ docker create \
   -v <path to data>:/config \
   --restart unless-stopped \
   digitalhigh/FlexTV
-### docker-compose
-
-Compatible with docker-compose v2 schemas.
-
 ```
----
+
+### Docker-Compose
+
+Compatible with Docker-Compose v2/3 schemas.
+
+```yml
 version: "2"
 services:
   FlexTV:
-    image: digitalhigh/FlexTV
     container_name: FlexTV
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
+    image: digitalhigh/FlexTV
     volumes:
       - <path to data>:/config
     ports:
@@ -58,35 +63,29 @@ When using volumes (`-v` flags) permissions issues can arise between the host OS
 Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
 
 In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as below:
+
+```bash
+  $ id <your_username>
+  uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
-  $ id username
-    uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
-```
-&nbsp;
+
 ## Application Setup
 
 Find the web interface at `<your-ip>:80` , set apps you wish to use with FlexTV via the webui.
-More info:- [FlexTV](https://github.com/d8ahazard/FlexTV)
 
-
+More info: [FlexTV](https://github.com/d8ahazard/FlexTV)
 
 ## Support Info
 
 * Shell access whilst the container is running: `docker exec -it FlexTV /bin/bash`
 * To monitor the logs of the container in realtime: `docker logs -f FlexTV`
-
-* container version number 
-
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' FlexTV`
-
-* image version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' digitalhigh/FlexTV`
+* Container version number:  `docker inspect -f '{{ index .Config.Labels "build_version" }}' FlexTV`
+* Image version number: `docker inspect -f '{{ index .Config.Labels "build_version" }}' digitalhigh/FlexTV`
 
 ## Updating Info
 
- 
 ## Updating
 
 To update FlexTV, just restart the container.
 
-+ **25.04.19:** Initial release.
+* **25.04.19:** Initial release.
