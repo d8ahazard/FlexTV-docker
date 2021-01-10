@@ -65,8 +65,8 @@ Ensure any volume directories on the host are owned by the same user you specify
 In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as below:
 
 ```bash
-  $ id username
-    uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
+  $ id <your_username>
+  uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
 
 ## Application Setup
